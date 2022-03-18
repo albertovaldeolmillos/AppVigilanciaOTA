@@ -1,0 +1,1209 @@
+<!--
+This XML file is used to configure dinamically the appearance of the grids in the OPS CC application.
+The following fields have not been included in any of the tables, though are included in many of them,
+as they are never shown to the user: XXX_VERSION, XXX_VALID, XXX_DELETED, XXX_SENT, XXX_EXTRASENT
+Finally the following fields have also not been included: MSG_FID.
+-->
+<tables>
+	<table name="ALARMS">
+		<field name="ALA_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="ALA_DALA_ID" visible="true" width="300" align="l" reltable="ALARMS_DEF" relfield="DALA_ID" relshown="DALA_DESCSHORT" reltranslate="false"/>
+		<field name="ALA_UNI_ID" visible="true" width="120" align="l" />
+		<field name="ALA_INIDATE" visible="true" width="160" align="c"/>
+	</table>
+	<table name="ALARMS_DEF">
+		<field name="DALA_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DALA_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DALA_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="DALA_LIT_ID" visible="true" width="300" align="r"/>
+		<field name="DALA_DSTA_ID" visible="true" width="160" align="r"/>
+	</table>
+	<table name="ALARMS_HIS">
+		<field name="HALA_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="HALA_DALA_ID" visible="true" width="160" align="l" reltable="ALARMS_DEF" relfield="DALA_ID" relshown="DALA_DESCSHORT" reltranslate="false"/>
+		<field name="HALA_UNI_ID" visible="true" width="160" align="l"/>
+		<field name="HALA_INIDATE" visible="true" width="160" align="c"/>
+		<field name="HALA_ENDDATE" visible="true" width="160" align="c"/>
+	</table>
+	<table name="ALARMS_MSGS_DEF">
+		<field name="DMALA_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DMALA_DALA_ID" visible="true" width="160" align="l" reltable="ALARMS_DEF" relfield="DALA_ID" relshown="DALA_DESCSHORT" reltranslate="false"/>
+		<field name="DMALA_GRP_ID" visible="true" width="160" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="DMALA_DMSG_ID" visible="true" width="160" align="l" reltable="MSGS_DEF" relfield="DMSG_ID" relshown="DMSG_DESCSHORT" reltranslate="false"/>
+		<field name="DMALA_LEVEL" visible="true" width="160" align="r"/>
+	</table>
+	<table name="ARTICLES" >
+		<field name="ART_ID" visible="true" width="60" align="r" primarykey="true" readonly="false" />
+		<field name="ART_DART_ID" visible="true" width="160" align="l" reltable="ARTICLES_DEF" relfield="DART_ID" relshown="DART_DESCLONG" reltranslate="false"/>
+		<field name="ART_VEHICLEID" visible="true" width="160" align="l"/>
+		<field name="ART_CUS_ID" visible="true" width="160" align="l" reltable="CUSTOMERS" relfield="CUS_ID" relshown="CUS_NAME" reltranslate="false"/>
+		<field name="ART_INIDATE" visible="true" width="160" align="c"/>
+		<field name="ART_ENDDATE" visible="true" width="160" align="c"/>
+		<field name="ART_STATUS" visible="true" width="60" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+	</table>
+	<table name="ARTICLES_DEF">
+		<field name="DART_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DART_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DART_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="DART_TAX_ID" visible="true" width="160" align="l" reltable="TAXES" relfield="TAX_ID" relshown="TAX_VALUE" reltranslate="false"/>
+		<field name="DART_REQUIRED" visible="true" width="160" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+	</table>
+	<table name="ARTICLES_RULES">
+		<field name="RUL_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="RUL_DART_ID" visible="true" width="160" align="l" reltable="ARTICLES_DEF" relfield="DART_ID" relshown="DART_DESCLONG" reltranslate="false"/>
+		<field name="RUL_TAR_ID" visible="true" width="160" align="r"/>
+		<field name="RUL_DGRP_ID" visible="true" width="160" align="l" reltable="GROUPS_DEF" relfield="DGRP_ID" relshown="DGRP_DESCSHORT" reltranslate="false"/>
+		<field name="RUL_GRP_ID" visible="true" width="160" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="RUL_CON_ID" visible="true" width="160" align="r"/>
+		<field name="RUL_INIDATE" visible="true" width="160" align="c"/>
+		<field name="RUL_ENDDATE" visible="true" width="160" align="c"/>
+	</table>
+	<table name="BLACK_LISTS">
+		<field name="BLIS_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="BLIS_DBLIS_ID" visible="true" width="200" align="l" reltable="BLACK_LISTS_DEF" relfield="DBLIS_ID" relshown="DBLIS_DESCSHORT" reltranslate="false"/>
+		<field name="BLIS_VALUE" visible="true" width="200" align="l"/>
+		<field name="BLIS_PARAM1" visible="true" width="80" align="l"/>
+		<field name="BLIS_PARAM2" visible="true" width="80" align="l"/>
+		<field name="BLIS_PARAM3" visible="true" width="80" align="l"/>
+	</table>
+	<table name="BLACK_LISTS_DEF">
+		<field name="DBLIS_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DBLIS_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DBLIS_DESCLONG" visible="true" width="400" align="l"/>
+	</table>
+	
+	<table name="CLOCK_IN">
+		<field name="CI_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="CI_USR_ID" visible="true" width="220" align="l"/>
+		<field name="CI_UNI_ID" visible="true" width="200" align="l"/>
+		<field name="CI_DATE" visible="true" width="200" align="l"/>
+	</table>	
+	
+	<table name="CODES">
+		<field name="COD_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="COD_CATEGORY" visible="true" width="120" align="l"/>
+		<field name="COD_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="COD_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="COD_LIT_ID" visible="true" width="60" align="r"/>
+	</table>
+	<table name="COLLECTINGS">
+		<field name="COL_ID" visible="true" width="75" align="r" primarykey="true"/>
+		<field name="COL_UNI_ID" visible="true" width="75" align="r"/>
+		<field name="COL_NUM" visible="true" width="75" align="r"/>
+		<field name="COL_DATE" visible="true" width="125" align="l"/>
+		<field name="COL_INIDATE" visible="true" width="125" align="l"/>
+		<field name="COL_ENDDATE" visible="true" width="125" align="l"/>
+		<field name="COL_BACK_COL_TOTAL" visible="true" width="180" align="r"/>
+		<field name="COL_CASH_PARK" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_FINE" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_RECHARGE" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_TOTAL" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_PARK_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_FINE_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_RECHARGE_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_TOTAL_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_005" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_010" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_020" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_050" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_100" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_200" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_PARK" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_FINE" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_RECHARGE" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_TOTAL" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_PARK_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_FINE_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_RECHARGE_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_TOTAL_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_PARK" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_FINE" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_RETURN" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_TOTAL" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_PARK_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_FINE_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_RETURN_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_TOTAL_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_050" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_050_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_075_100" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_100_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_150_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_200_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_250_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_300_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_400_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_500" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1000" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1000_1200" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1200_1400" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1400_1600" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1600_1800" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1800_2000" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_2000_2200" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_2200_0000" visible="true" width="150" align="r"/>       								
+	</table>
+
+	<table name="V_COLLECTINGS">
+		<field name="COL_ID" visible="true" width="75" align="r" primarykey="true"/>
+		<field name="COL_UNI_ID" visible="true" width="75" align="r"/>
+		<field name="COL_NUM" visible="true" width="75" align="r"/>
+		<field name="COL_DATE" visible="true" width="125" align="l"/>
+		<field name="COL_INIDATE" visible="true" width="125" align="l"/>
+		<field name="COL_ENDDATE" visible="true" width="125" align="l"/>
+		<field name="COL_COIN_SYMBOL" visible="true" width="125" align="l"/>		
+		<field name="COL_BACK_COL_TOTAL" visible="true" width="180" align="r"/>
+		<field name="COL_CASH_PARK" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_FINE" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_RECHARGE" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_TOTAL" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_PARK_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_FINE_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_RECHARGE_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_TOTAL_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_V1" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_Q1" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_V2" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_Q2" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_V3" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_Q3" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_V4" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_Q4" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_V5" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_Q5" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_V6" visible="true" width="150" align="r"/>
+		<field name="COL_CASH_COINS_Q6" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_PARK" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_FINE" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_RECHARGE" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_TOTAL" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_PARK_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_FINE_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_RECHARGE_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CRCARD_TOTAL_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_PARK" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_FINE" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_RETURN" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_TOTAL" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_PARK_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_FINE_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_RETURN_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CHCARD_TOTAL_OPS" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_050" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_050_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_075_100" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_100_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_150_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_200_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_250_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_300_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_400_075" visible="true" width="150" align="r"/>
+		<field name="COL_CMI_500" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1000" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1000_1200" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1200_1400" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1400_1600" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1600_1800" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_1800_2000" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_2000_2200" visible="true" width="150" align="r"/>
+		<field name="COL_CTI_2200_0000" visible="true" width="150" align="r"/>       								
+	</table>
+
+	<table name="COLLECTINGS_CASH">
+		<field name="COS_DATE" visible="true" width="125" align="l" primarykey="true"/>
+		<field name="COS_TYPE" visible="true" width="75" align="r" primarykey="true"/>
+		<field name="COS_005" visible="true" width="60" align="r"/>
+		<field name="COS_010" visible="true" width="60" align="r"/>
+		<field name="COS_020" visible="true" width="60" align="r"/>
+		<field name="COS_050" visible="true" width="60" align="r"/>
+		<field name="COS_100" visible="true" width="60" align="r"/>
+		<field name="COS_200" visible="true" width="60" align="r"/>
+		<field name="COS_TYPE_DATA" visible="true" width="60" align="r"/>
+		<field name="COS_DATE_RCV" visible="true" width="125" align="l"/>
+		<field name="COS_UNI_ID" visible="true" width="75" align="r"/>
+	</table>
+	<table name="COLLECTINGS_CARD">
+		<field name="COR_DATE" visible="true" width="125" align="l" primarykey="true"/>
+		<field name="COR_TYPE" visible="true" width="75" align="r" primarykey="true"/>
+		<field name="COR_OPNUM" visible="true" width="75" align="r" />
+		<field name="COR_TOTAL" visible="true" width="75" align="r"/>
+		<field name="COR_DATE_RCV" visible="true" width="125" align="l"/>
+		<field name="COR_TYPE_DATA" visible="true" width="75" align="r"/>
+		<field name="COR_UNI_ID" visible="true" width="75" align="r"/>
+	</table>
+	<table name="CONSTRAINTS">
+		<field name="CON_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="CON_NUMBER" visible="true" width="160" align="r" primarykey="true"/>
+		<field name="CON_DCON_ID" visible="true" width="160" align="l" reltable="CONSTRAINTS_DEF" relfield="DCON_ID" relshown="DCON_DESCSHORT" reltranslate="false"/>
+		<field name="CON_DGRP_ID" visible="true" width="160" align="l" reltable="GROUPS_DEF" relfield="DGRP_ID" relshown="DGRP_DESCSHORT" reltranslate="false"/>
+		<field name="CON_GRP_ID" visible="true" width="160" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="CON_VALUE" visible="true" width="160" align="r"/>
+	</table>
+	<table name="CONSTRAINTS_DEF">
+		<field name="DCON_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DCON_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DCON_DESCLONG" visible="true" width="400" align="l"/>
+	</table>
+	<table name="CREDIT_CARDS">
+		<field name="CC_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="CC_INS_DATE" visible="true" width="60" align="r"/>
+		<field name="CC_OPE_ID" visible="true" width="70" align="l"/>
+		<field name="CC_NUMBER" visible="true" width="200" align="l"/>
+		<field name="CC_NAME" visible="true" width="200" align="l"/>
+		<field name="CC_EXPRTN_DATE" visible="true" width="70" align="l"/>
+		<field name="CC_STATE" visible="true" width="60" align="l"/>
+	</table>
+
+	<table name="CURRENCIES">
+		<field name="CUR_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="CUR_DEFAULT" visible="true" width="60" align="r" 	 relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="CUR_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="CUR_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="CUR_SYMBOL" visible="true" width="100" align="r"/>
+		<field name="CUR_INTPRECISION" visible="true" width="100" align="r"/>
+		<field name="CUR_FORMAT" visible="true" width="100" align="r"/>
+	</table>
+	<table name="CUSTOMERS">
+		<field name="CUS_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="CUS_NAME" visible="true" width="200" align="l"/>
+		<field name="CUS_SURNAME1" visible="true" width="200" align="l"/>
+		<field name="CUS_SURNAME2" visible="true" width="200" align="l"/>
+		<field name="CUS_DNI" visible="true" width="160" align="l"/>
+		<field name="CUS_PHONE" visible="true" width="160" align="l"/>
+		<field name="CUS_ADDRESS" visible="true" width="160" align="l"/>
+	</table>
+	<table name="DAYS">
+		<field name="DAY_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DAY_DDAY_ID" visible="true" width="160" align="l" reltable="DAYS_DEF" relfield="DDAY_ID" relshown="DDAY_DESCSHORT" reltranslate="false"/>
+		<field name="DAY_DATE" visible="true" width="160" align="c"/>
+		<field name="DAY_DESC" visible="true" width="200" align="l"/>
+	</table>
+	<table name="DAYS_DEF">
+		<field name="DDAY_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DDAY_CODE" visible="true" width="160" align="l"/>
+		<field name="DDAY_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DDAY_DESCLONG" visible="true" width="400" align="l"/>
+	</table>
+	<table name="DEVICES">
+		<field name="DEV_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DEV_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DEV_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="DEV_DDEV_ID" visible="true" width="150" align="l" reltable="DEVICES_DEF" relfield="DDEV_ID" relshown="DDEV_DESCSHORT" reltranslate="false"/>
+		<field name="DEV_MMSG_ID" visible="true" width="150" align="l" reltable="MSGS_MEDIA" relfield="MMSG_ID" relshown="MMSG_DESCSHORT" reltranslate="false"/>
+		<field name="DEV_DPUNI_ID" visible="true" width="150" align="l" reltable="UNITS_PHY_DEF" relfield="DPUNI_ID" relshown="DPUNI_DESC" reltranslate="false"/>
+	</table>
+	<table name="DEVICES_DEF">
+		<field name="DDEV_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DDEV_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DDEV_DESCLONG" visible="true" width="400" align="l"/>
+	</table>
+	<table name="DEVICES_PARAM">
+		<field name="PDEV_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="PDEV_DESCSHORT" visible="true" width="150" align="l"/>
+		<field name="PDEV_DESCLONG" visible="true" width="300" align="l"/>
+		<field name="PDEV_VALTYPE" visible="true" width="150" align="l"/>
+		<field name="PDEV_VALSTRING" visible="true" width="150" align="l"/>
+		<field name="PDEV_VALINTEGER" visible="true" width="150" align="r"/>
+		<field name="PDEV_VALFLOAT" visible="true" width="150" align="r"/>
+	</table>
+	<table name="FINES">
+		<field name="FIN_ID" visible="true" width="50" align="r" primarykey="true"/>
+		<field name="FIN_STATUSADMON" visible="true" width="120" align="r" reltable="FINES_STSADMON_DEF" relfield="DSAFIN_ID" relshown="DSAFIN_LIT_ID" reltranslate="true"/> 
+		<field name="FIN_STATUSADMONAUTO" visible="true" width="120" align="r" reltable="FINES_STSADMON_DEF" relfield="DSAFIN_ID" relshown="DSAFIN_LIT_ID" reltranslate="true"/> 
+		<field name="FIN_DFIN_ID" visible="true" width="60" align="l" reltable="FINES_DEF" relfield="DFIN_ID" relshown="DFIN_DESCSHORT" reltranslate="false"/>
+		<field name="FIN_VEHICLEID" visible="true" width="80" align="l" />
+		<field name="FIN_MODEL" visible="true" width="100" align="l" /> 
+		<field name="FIN_MANUFACTURER" visible="true" width="80" align="l"  /> 
+		<field name="FIN_COLOUR" visible="true" width="80" align="l"  /> 
+		<field name="FIN_STR_ID" visible="true" width="120" align="l" reltable="STREETS" relfield="STR_ID" relshown="STR_DESC" reltranslate="false"/>
+		<field name="FIN_STRNUMBER" visible="true" width="20" align="r"/>
+		<field name="FIN_DATE" visible="true" width="120" align="c" sort="desc"/>
+		<field name="FIN_GRP_ID_ZONE" visible="true" width="200" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCLONG" reltranslate="false"/>
+		<field name="FIN_GRP_ID_ROUTE" visible="true" width="200" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCLONG" reltranslate="false"/>
+		<field name="FIN_COMMENTS" visible="true" width="80" align="l"/>
+		<field name="FIN_USR_ID" visible="true" width="100" align="l" reltable="USERS" relfield="USR_ID" relshown="USR_LOGIN" reltranslate="false"/>
+		<field name="FIN_UNI_ID" visible="true" width="40" align="l"/>
+		<filter where="1=2"/>		
+	</table>
+	<table name="FINES_DEF">
+		<field name="DFIN_ID" visible="true" width="30" align="r" primarykey="true"/>
+		<field name="DFIN_COD_ID" visible="true" width="60" align="r"/>
+		<field name="DFIN_DESCSHORT" visible="true" width="80" align="l"/>
+		<field name="DFIN_DESCLONG" visible="true" width="380" align="l"/>
+		<field name="DFIN_VALUE" visible="true" width="80" align="r"/>
+		<field name="DFIN_STATUS" visible="true" width="80" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="DFIN_SIGN" visible="true" width="80" align="r"/>
+		<field name="DFIN_PAYINPDM" visible="true" width="120" align="l"/>
+		<field name="DFIN_NUMTICKETS" visible="true" width="100" align="r"/>
+	</table>
+	<table name="FINES_HIS">
+		<field name="HFIN_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="HFIN_DFIN_ID" visible="true" width="80" align="l" reltable="FINES_DEF" relfield="DFIN_ID" relshown="DFIN_DESCSHORT" reltranslate="false"/>
+		<field name="HFIN_NUMBER" visible="true" width="60" align="l"/>
+		<field name="HFIN_VEHICLEID" visible="true" width="60" align="l"/>
+		<field name="HFIN_MODEL" visible="true" width="80" align="l"/>
+		<field name="HFIN_MANUFACTURER" visible="true" width="80" align="l"/>
+		<field name="HFIN_COLOUR" visible="true" width="80" align="l"/>
+		<field name="HFIN_GRP_ID" visible="true" width="120" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="HFIN_STR_ID" visible="true" width="180" align="l" reltable="STREETS" relfield="STR_ID" relshown="STR_DESC" reltranslate="false"/>
+		<field name="HFIN_STRNUMBER" visible="true" width="60" align="r"/>
+		<field name="HFIN_DATE" visible="true" width="80" align="c" sort="desc"/>
+		<field name="HFIN_COMMENTS" visible="true" width="120" align="l"/>
+		<field name="HFIN_USR_ID" visible="true" width="120" align="l" reltable="USERS" relfield="USR_ID" relshown="USR_NAME" reltranslate="false"/>
+		<field name="HFIN_UNI_ID" visible="true" width="100" align="l"/>
+		<field name="HFIN_DPAY_ID" visible="true" width="100" align="l" reltable="PAYTYPES_DEF" relfield="DPAY_ID" relshown="DPAY_DESCSHORT" reltranslate="false"/>
+		<field name="HFIN_COD_ID" visible="true" width="40" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<filter where="1=2"/>		
+	</table>
+	<table name="GPRS_TARIFF">
+		<field name="GTAR_ID" visible="true" width="30" align="r" primarykey="true"/>
+		<field name="GTAR_SINGLELINE" visible="true" width="150" align="r"/>
+		<field name="GTAR_MINSESSION" visible="true" width="150" align="r"/>
+		<field name="GTAR_BONUS" visible="true" width="150" align="r"/>
+		<field name="GTAR_INTERVAL" visible="true" width="150" align="r"/>
+		<field name="GTAR_BYTES_BONUS" visible="true" width="150" align="r"/>
+		<field name="GTAR_VALUE_BONUS" visible="true" width="150" align="r"/>
+		<field name="GTAR_BYTES_NOBONUS" visible="true" width="150" align="r"/>
+		<field name="GTAR_VALUE_NOBONUS" visible="true" width="150" align="r"/>
+	</table>
+	<table name="GPRS_TRAFFIC">
+		<field name="GTRA_ID" visible="true" width="30" align="r" primarykey="true"/>
+		<field name="GTRA_UNI_ID" visible="true" width="120" align="l"/>
+		<field name="GTRA_UNI_ID_TARGET" visible="true" width="120" align="l" reltable="UNITS" relfield="UNI_ID" relshown="UNI_DESCSHORT" reltranslate="false"/>
+		<field name="GTRA_INIDATE" visible="true" width="80" align="c"/>
+		<field name="GTRA_ENDDATE" visible="true" width="80" align="c"/>
+		<field name="GTRA_BYTES_OK_IN" visible="true" width="80" align="r"/>
+		<field name="GTRA_BYTES_NOK_IN" visible="true" width="80" align="r"/>
+		<field name="GTRA_NUMERRORS_IN" visible="true" width="80" align="r"/>
+		<field name="GTRA_BYTES_OK_OUT" visible="true" width="80" align="r"/>
+		<field name="GTRA_BYTES_NOK_OUT" visible="true" width="80" align="r"/>
+		<field name="GTRA_NUMERRORS_OUT" visible="true" width="80" align="r"/>
+		<field name="GTRA_NUMSESSIONS_OK" visible="true" width="80" align="r"/>
+		<field name="GTRA_NUMSESSIONS_NOK" visible="true" width="80" align="r"/>
+	</table>
+	<table name="GROUPS">
+		<field name="GRP_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="GRP_DGRP_ID" visible="true" width="120" align="l" reltable="GROUPS_DEF" relfield="DGRP_ID" relshown="DGRP_DESCSHORT" reltranslate="false"/>
+		<field name="GRP_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="GRP_DESCLONG" visible="true" width="200" align="l"/>
+		<field name="GRP_RELATED" visible="true" width="120" align="r"/>
+		<field name="GRP_POSX" visible="true" width="120" align="r"/>
+		<field name="GRP_POSY" visible="true" width="120" align="r"/>
+		<field name="GRP_PATH" visible="true" width="120" align="l"/>
+	</table>
+	<table name="GROUPS_CHILDS">
+		<field name="CGRP_ID" visible="true" width="60" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false" primarykey="true"/>
+		<field name="CGRP_TYPE" visible="true" width="200" align="l" primarykey="true"/>
+		<field name="CGRP_CHILD" visible="true" width="160" align="r" primarykey="true"/>
+		<field name="CGRP_ORDER" visible="true" width="160" align="r"/>
+	</table>
+	<table name="GROUPS_DEF">
+		<field name="DGRP_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DGRP_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DGRP_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="DGRP_DGRP_ID_VISIBLELEVEL" visible="true" width="160" align="r"/>
+		<field name="DGRP_PHYORDER" visible="true" width="60" align="r"/>
+	</table>
+	<table name="GROUPS_OCCUPATION">
+		<field name="OGRP_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="OGRP_GRP_ID" visible="true" width="150" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="OGRP_LEVEL" visible="true" width="100" align="r"/>
+		<field name="OGRP_INIDATE" visible="true" width="160" align="c"/>
+		<field name="OGRP_ENDDATE" visible="true" width="160" align="c"/>
+	</table>
+	<table name="GROUPS_PDA">
+		<field name="GPDA_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="GPDA_GRP_ID" visible="true" width="300" align="r"/>
+		<field name="GPDA_GRP_ID_CHILD" visible="true" width="300" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="GPDA_DESC" visible="true" width="400" align="l"/>
+	</table>
+	<table name="INTERVALS">
+		<field name="INT_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="INT_STAR_ID" visible="true" width="160" align="l" reltable="SUBTARIFFS" relfield="STAR_ID" relshown="STAR_DESCSHORT" reltranslate="false" primarykey="true"/>
+		<field name="INT_MINUTES" visible="true" width="160" align="r"/>
+		<field name="INT_VALUE" visible="true" width="160" align="r"/>
+	</table>
+	<table name="LANGUAGES">
+		<field name="LAN_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="LAN_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="LAN_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="LAN_IMAGE" visible="true" width="160" align="l"/>
+	</table>
+	<table name="LITERALS">
+		<field name="LIT_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="LIT_LAN_ID" visible="true" width="60" align="l" reltable="LANGUAGES" relfield="LAN_ID" relshown="LAN_DESCSHORT" reltranslate="false" primarykey="true"/>
+		<field name="LIT_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="LIT_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="LIT_CATEGORY" visible="true" width="160" align="l"/>
+		<field name="LIT_DLUNI_ID" visible="true" width="160" align="l" reltable="UNITS_LOG_DEF" relfield="DLUNI_ID" relshown="DLUNI_DESC" reltranslate="false"/>
+	</table>
+	                                 
+	
+	
+	<table name="MOBILE_USERS">
+		<field name="MU_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="MU_LOGIN" visible="true" width="100" align="r"/>
+		<field name="MU_PASSWORD" visible="true" width="100" align="r"/>
+		<field name="MU_NAME" visible="true" width="100" align="l"/>
+		<field name="MU_SURNAME1" visible="true" width="100" align="l"/>
+		<field name="MU_SURNAME2" visible="true" width="100" align="l"/>
+		<field name="MU_DNI" visible="true" width="100" align="r"/>
+		<field name="MU_EMAIL" visible="true" width="100" align="l"/>
+		<field name="MU_ADDR_STREET" visible="true" width="100" align="l"/>
+		<field name="MU_ADDR_NUMBER" visible="true" width="100" align="l"/>
+		<field name="MU_ADDR_LEVEL" visible="true" width="100" align="r"/>
+		<field name="MU_ADDR_STAIR" visible="true" width="100" align="l"/>
+		<field name="MU_ADDR_LETTER" visible="true" width="100" align="l"/>
+		<field name="MU_ADDR_POSTAL_CODE" visible="true" width="100" align="l"/>
+		<field name="MU_ADDR_CITY" visible="true" width="100" align="r"/>
+		<field name="MU_ADDR_PROVINCE" visible="true" width="100" align="l"/>
+		<field name="MU_ADDR_COUNTRY" visible="true" width="100" align="l"/>
+		<field name="MU_NUM_CREDIT_CARD" visible="true" width="200" align="l"/>
+		<field name="MU_NAME_CARD" visible="true" width="200" align="r"/>
+		<field name="MU_NUM_CC_EXPIRATION_DATE" visible="true" width="100" align="r"/>
+		<field name="MU_MOBILE_TELEPHONE" visible="true" width="100" align="l"/>
+		<field name="MU_MOBILE_COMPANY" visible="true" width="100" align="l" reltable="MOBILE_USERS_COMPANY_DEF" relfield="MUCD_ID" relshown="MUCD_DESCSHORT" reltranslate="false"/>
+		<field name="MU_PENDING_PAYMENTS" visible="true" width="100" align="l"/>
+	</table>
+	
+	
+	<table name="MOBILE_USERS_PLATES">	
+		<field name="MUP_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="MUP_MU_ID" visible="true" width="60" align="r" reltable="MOBILE_USERS" relfield="MU_ID" relshown="MU_LOGIN" reltranslate="false"/>
+		<field name="MUP_PLATE" visible="true" width="100" align="l"/>
+		<field name="MUP_NUM_OPERATIONS" visible="true" width="100" align="l"/>
+	</table>	
+	
+	<table name="MOBILE_USERS_COMPANY_DEF">
+		<field name="MUCD_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="MUCD_DESCSHORT" visible="true" width="100" align="l"/>
+		<field name="MUCD_DESCLONG" visible="true" width="100" align="l"/>
+	</table>	
+	
+	<table name="MODULES">
+		<field name="MOD_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="MOD_DESCSHORT" visible="true" width="100" align="l"/>
+		<field name="MOD_DESCLONG" visible="true" width="200" align="l"/>
+		<field name="MOD_ORDER" visible="true" width="160" align="r"/>
+		<field name="MOD_LIT_ID" visible="true" width="160" align="r"/>
+	</table>
+	<table name="MSGS">
+		<field name="MSG_ID" visible="true" width="40" align="r" primarykey="true"/>
+		<field name="MSG_DMSG_ID" visible="true" width="120" align="l" reltable="MSGS_DEF" relfield="DMSG_ID" relshown="DMSG_DESCSHORT" reltranslate="false"/>
+		<field name="MSG_MMSG_ID" visible="true" width="120" align="l" reltable="MSGS_MEDIA" relfield="MMSG_ID" relshown="MMSG_DESCSHORT" reltranslate="false"/>
+		<field name="MSG_DATE" visible="true" width="80" align="c"/>
+		<field name="MSG_PRIORITY" visible="true" width="60" align="r"/>
+		<field name="MSG_MANDATORY" visible="true" width="60" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="MSG_MSG_ID" visible="true" width="80" align="r"/>
+		<field name="MSG_MSG_ORDER" visible="true" width="60" align="r"/>
+		<field name="MSG_XML" visible="true" width="150" align="l"/>
+		<field name="MSG_UNI_ID" visible="true" width="120" align="l"/>
+		<field name="MSG_IPADAPTER" visible="true" width="120" align="l"/>
+		<field name="MSG_PORTADAPTER" visible="true" width="80" align="r"/>
+		<field name="MSG_STATUS" visible="true" width="60" align="r"/>
+		<field name="MSG_NUMRETRIES" visible="true" width="80" align="r"/>
+		<field name="MSG_LASTRETRY" visible="true" width="80" align="c"/>
+		<field name="MSG_TOTALRETRIES" visible="true" width="80" align="r"/>
+		<field name="MSG_PARCIALRETRIES" visible="true" width="80" align="r"/>
+		<field name="MSG_TOTALINTERVAL" visible="true" width="80" align="r"/>
+		<field name="MSG_PARCIALINTERVAL" visible="true" width="80" align="r"/>
+		<field name="MSG_TOTALTIME" visible="true" width="80" align="r"/>
+		<field name="MSG_HISMANDATORY" visible="true" width="80" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+	</table>	
+	<table name="MSGS_CONFIG">
+		<field name="CMSG_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="CMSG_DMSG_ID" visible="true" width="160" align="l" reltable="MSGS_DEF" relfield="DMSG_ID" relshown="DMSG_DESCSHORT" reltranslate="false"/>
+		<field name="CMSG_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="CMSG_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="CMSG_DLUNI_ID" visible="true" width="150" align="l" reltable="UNITS_LOG_DEF" relfield="DLUNI_ID" relshown="DLUNI_DESC" reltranslate="false"/>
+		<field name="CMSG_LIT_ID" visible="true" width="160" align="l"/>
+	</table>
+	<table name="MSGS_DEF">
+		<field name="DMSG_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DMSG_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DMSG_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="DMSG_LIT_ID" visible="true" width="80" align="r"/>
+		<field name="DMSG_HISMANDATORY" visible="true" width="60" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="DMSG_PROCESSTIME" visible="true" width="120" align="r"/>
+		<field name="DMSG_USERTIME" visible="true" width="120" align="r"/>
+		<field name="DMSG_PRIORITY" visible="true" width="120" align="r"/>
+	</table>
+	<table name="MSGS_FMT">
+		<field name="FMSG_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="FMSG_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="FMSG_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="FMSG_XSL" visible="true" width="200" align="l"/>
+	</table>
+	<table name="MSGS_LOG">
+		<field name="LMSG_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="LMSG_SRC_UNI_ID" visible="true" width="150" align="l" reltable="UNITS" relfield="UNI_ID" relshown="UNI_DESCSHORT" reltranslate="false"/>
+		<field name="LMSG_DST_UNI_ID" visible="true" width="150" align="l" reltable="UNITS" relfield="UNI_ID" relshown="UNI_DESCSHORT" reltranslate="false"/>
+		<field name="LMSG_DATE" visible="true" width="80" align="c"/>
+		<field name="LMSG_TYPE" visible="true" width="60" align="l"/>
+		<field name="LMSG_XML_IN" visible="true" width="600" align="l"/>
+		<field name="LMSG_XML_OUT" visible="true" width="600" align="l"/>
+		<filter where="1=2"/>
+		
+	</table>	
+	<table name="MSGS_HIS">
+		<field name="HMSG_ID" visible="true" width="40" align="r" primarykey="true"/>
+		<field name="HMSG_DMSG_ID" visible="true" width="120" align="l" reltable="MSGS_DEF" relfield="DMSG_ID" relshown="DMSG_DESCSHORT" reltranslate="false"/>
+		<field name="HMSG_MMSG_ID" visible="true" width="120" align="l" reltable="MSGS_MEDIA" relfield="MMSG_ID" relshown="MMSG_DESCSHORT" reltranslate="false"/>
+		<field name="HMSG_DATE" visible="true" width="80" align="c"/>
+		<field name="HMSG_PRIORITY" visible="true" width="60" align="r"/>
+		<field name="HMSG_MANDATORY" visible="true" width="60" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="HMSG_HMSG_ID" visible="true" width="80" align="r"/>
+		<field name="HMSG_HMSG_ORDER" visible="true" width="60" align="r"/>
+		<field name="HMSG_XML" visible="true" width="150" align="l"/>
+		<field name="HMSG_UNI_ID" visible="true" width="120" align="l"/>
+		<field name="HMSG_IPADAPTER" visible="true" width="120" align="l"/>
+		<field name="HMSG_PORTADAPTER" visible="true" width="80" align="r"/>
+		<field name="HMSG_STATUS" visible="true" width="60" align="r"/>
+		<field name="HMSG_NUMRETRIES" visible="true" width="80" align="r"/>
+		<field name="HMSG_LASTRETRY" visible="true" width="80" align="c"/>
+		<field name="HMSG_TOTALRETRIES" visible="true" width="80" align="r"/>
+		<field name="HMSG_PARCIALRETRIES" visible="true" width="80" align="r"/>
+		<field name="HMSG_TOTALINTERVAL" visible="true" width="80" align="r"/>
+		<field name="HMSG_PARCIALINTERVAL" visible="true" width="80" align="r"/>
+		<field name="HMSG_TOTALTIME" visible="true" width="80" align="r"/>
+	</table>
+	<table name="MSGS_MEDIA">
+		<field name="MMSG_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="MMSG_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="MMSG_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="MMSG_LIT_ID" visible="true" width="160" align="r"/>
+	</table>
+	<table name="MSGS_RETRIES_DEF">
+		<field name="DRMSG_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DRMSG_DMSG_ID" visible="true" width="160" align="l" reltable="MSGS_DEF" relfield="DMSG_ID" relshown="DMSG_DESCSHORT" reltranslate="false"/>
+		<field name="DRMSG_MMSG_ID" visible="true" width="160" align="l" reltable="MSGS_MEDIA" relfield="MMSG_ID" relshown="MMSG_DESCSHORT" reltranslate="false"/>
+		<field name="DRMSG_DREP_ID" visible="true" width="120" align="l" reltable="REPLICATIONS_DEF" relfield="DREP_ID" relshown="DREP_DESCSHORT" reltranslate="false"/>
+		<field name="DRMSG_TOTALRETRIES" visible="true" width="120" align="r"/>
+		<field name="DRMSG_PARCIALRETRIES" visible="true" width="120" align="r"/>
+		<field name="DRMSG_TOTALINTERVAL" visible="true" width="120" align="r"/>
+		<field name="DRMSG_TOTALTIME" visible="true" width="120" align="r"/>
+		<field name="DRMSG_PARCIALINTERVAL" visible="true" width="120" align="r"/>
+	</table>
+	<table name="MSGS_RULES">
+		<field name="RMSG_ID" visible="true" width="50" align="r" primarykey="true"/>
+		<field name="RMSG_DMSG_ID" visible="true" width="80" align="l" reltable="MSGS_DEF" relfield="DMSG_ID" relshown="DMSG_DESCSHORT" reltranslate="false"/>
+		<field name="RMSG_DLUNI_SOURCE" visible="true" width="80" align="l" reltable="UNITS_LOG_DEF" relfield="DLUNI_ID" relshown="DLUNI_DESC" reltranslate="false"/>
+		<field name="RMSG_DLUNI_DESTINATION" visible="true" width="80" align="l" reltable="UNITS_LOG_DEF" relfield="DLUNI_ID" relshown="DLUNI_DESC" reltranslate="false"/>
+		<field name="RMSG_FMSG_ID" visible="true" width="80" align="l" reltable="MSGS_FMT" relfield="FMSG_ID" relshown="FMSG_DESCSHORT" reltranslate="false"/>
+		<field name="RMSG_MMSG_ID" visible="true" width="80" align="l" reltable="MSGS_MEDIA" relfield="MMSG_ID" relshown="MMSG_DESCSHORT" reltranslate="false"/>
+		<field name="RMSG_MANDATORY" visible="true" width="80" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="RMSG_PRIORITY" visible="true" width="60" align="r"/>
+		<field name="RMSG_RETRIES" visible="true" width="60" align="r"/>
+		<field name="RMSG_IPADAPTER" visible="true" width="100" align="l"/>
+		<field name="RMSG_PORTADAPTER" visible="true" width="60" align="r"/>
+		<field name="RMSG_PARAM1" visible="true" width="100" align="l"/>
+		<field name="RMSG_PARAM2" visible="true" width="100" align="l"/>
+		<field name="RMSG_PARAM3" visible="true" width="100" align="r"/>
+		<field name="RMSG_STATUS" visible="true" width="60" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+	</table>
+	<table name="OPERATIONS">
+		<field name="OPE_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="OPE_DOPE_ID_VIS" visible="true" width="60" align="l" reltable="OPERATIONS_DEF" relfield="DOPE_ID" relshown="DOPE_DESCSHORT" reltranslate="false"/>
+		<field name="OPE_VEHICLEID" visible="true" width="100" align="l"/>
+		<field name="OPE_FIN_ID" visible="true" width="100" align="l"/>
+		<field name="OPE_FIN_DFIN_ID" visible="true" width="90" align="l" reltable="FINES_DEF" relfield="DFIN_ID" relshown="DFIN_DESCSHORT" reltranslate="false"/>		
+		<field name="OPE_DART_ID" visible="true" width="150" align="l" reltable="ARTICLES_DEF" relfield="DART_ID" relshown="DART_DESCLONG" reltranslate="false"/>
+		<field name="OPE_ART_ID" visible="true" width="40" align="l"/>
+		<field name="OPE_GRP_ID" visible="true" width="80" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="OPE_UNI_ID" visible="true" width="80" align="l"/>
+		<field name="OPE_MOVDATE" visible="true" width="120" align="c" sort="desc"/>
+		<field name="OPE_INIDATE" visible="true" width="120" align="c"/>
+		<field name="OPE_ENDDATE" visible="true" width="120" align="c"/>
+		<field name="OPE_DURATION" visible="true" width="30" align="r"/>
+		<field name="OPE_VALUE" visible="true" width="50" align="r"/>
+		<field name="OPE_DPAY_ID" visible="true" width="60" align="l" reltable="PAYTYPES_DEF" relfield="DPAY_ID" relshown="DPAY_DESCSHORT" reltranslate="false"/>
+		<field name="OPE_CHIPCARD_ID" visible="true" width="60" align="r"/>
+		<field name="OPE_CHIPCARD_CREDIT" visible="true" width="110" align="r"/>
+		<field name="OPE_OPE_ID" visible="true" width="60" align="r"/>
+		<field name="OPE_DOPE_ID" visible="true" width="0" align="l"/>
+	</table>
+
+	<table name="VW_OPERATIONS_CC">
+		<field name="OPE_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="OPE_DOPE_ID_VIS" visible="true" width="60" align="l" reltable="OPERATIONS_DEF" relfield="DOPE_ID" relshown="DOPE_LIT_ID" reltranslate="true"/>
+		<field name="OPE_TICKETNUM" visible="true" width="80" align="r"/>
+		<field name="OPE_VEHICLEID" visible="true" width="100" align="l"/>
+		<field name="OPE_FIN_ID" visible="true" width="100" align="l"/>
+		<field name="OPE_FIN_DFIN_ID" visible="true" width="90" align="l" reltable="FINES_DEF" relfield="DFIN_ID" relshown="DFIN_DESCSHORT" reltranslate="false"/>		
+		<field name="OPE_DART_ID" visible="true" width="150" align="l" reltable="ARTICLES_DEF" relfield="DART_ID" relshown="DART_DESCLONG" reltranslate="false"/>
+		<field name="OPE_ART_ID" visible="true" width="40" align="l"/>
+		<field name="OPE_GRP_ID" visible="true" width="80" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="OPE_UNI_ID" visible="true" width="80" align="l"/>
+		<field name="OPE_MOVDATE" visible="true" width="120" align="c" sort="desc"/>
+		<field name="OPE_INIDATE" visible="true" width="120" align="c"/>
+		<field name="OPE_ENDDATE" visible="true" width="120" align="c"/>
+		<field name="OPE_DURATION" visible="true" width="30" align="r"/>
+		<field name="OPE_VALUE" visible="true" width="50" align="r"/>
+		<field name="OPE_DPAY_ID" visible="true" width="60" align="l" reltable="PAYTYPES_DEF" relfield="DPAY_ID" relshown="DPAY_LIT_ID" reltranslate="true"/>
+		<field name="OPE_CHIPCARD_ID" visible="true" width="60" align="r"/>
+		<field name="OPE_CHIPCARD_CREDIT" visible="true" width="110" align="r"/>
+		<field name="CC_NUMBER" visible="true" width="200" align="l"/>
+		<field name="OPE_OPE_ID" visible="true" width="60" align="r"/>
+		<field name="OPE_DOPE_ID" visible="true" width="0" align="l"/>			
+		<filter where="1=2"/>
+	</table>
+
+	<table name="OPERATIONS_DEF">
+		<field name="DOPE_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DOPE_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DOPE_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="DOPE_SIGN" visible="true" width="100" align="r"/>
+		<field name="DOPE_STAT" visible="true" width="100" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="DOPE_NUMTICKETS" visible="true" width="100" align="r"/>
+	</table>
+	<table name="OPERATIONS_HIS">
+		<field name="HOPE_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="HOPE_DOPE_ID" visible="true" width="80" align="l" reltable="OPERATIONS_DEF" relfield="DOPE_ID" relshown="DOPE_DESCSHORT" reltranslate="false"/>
+		<field name="HOPE_HOPE_ID" visible="true" width="80" align="r"/>
+		<field name="HOPE_ART_ID" visible="true" width="40" align="r"/>
+		<field name="HOPE_GRP_ID" visible="true" width="80" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="HOPE_UNI_ID" visible="true" width="80" align="l"/>
+		<field name="HOPE_DPAY_ID" visible="true" width="60" align="l" reltable="PAYTYPES_DEF" relfield="DPAY_ID" relshown="DPAY_DESCSHORT" reltranslate="false"/>
+		<field name="HOPE_MOVDATE" visible="true" width="80" align="c" sort="desc"/>
+		<field name="HOPE_INIDATE" visible="true" width="80" align="c"/>
+		<field name="HOPE_ENDDATE" visible="true" width="80" align="c"/>
+		<field name="HOPE_DURATION" visible="true" width="40" align="r"/>
+		<field name="HOPE_VALUE" visible="true" width="50" align="r"/>
+		<field name="HOPE_VEHICLEID" visible="true" width="100" align="l"/>
+	</table>
+
+	<table name="VW_OPERATIONS_HIS_CC">
+		<field name="HOPE_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="HOPE_DOPE_ID_VIS" visible="true" width="60" align="l" reltable="OPERATIONS_DEF" relfield="DOPE_ID" relshown="DOPE_LIT_ID" reltranslate="true"/>
+		<field name="HOPE_TICKETNUM" visible="true" width="80" align="r"/>
+		<field name="HOPE_VEHICLEID" visible="true" width="100" align="l"/>
+		<field name="HOPE_FIN_ID" visible="true" width="100" align="l"/>
+		<field name="HOPE_FIN_DFIN_ID" visible="true" width="90" align="l" reltable="FINES_DEF" relfield="DFIN_ID" relshown="DFIN_DESCSHORT" reltranslate="false"/>		
+		<field name="HOPE_DART_ID" visible="true" width="150" align="l" reltable="ARTICLES_DEF" relfield="DART_ID" relshown="DART_DESCLONG" reltranslate="false"/>
+		<field name="HOPE_ART_ID" visible="true" width="40" align="l"/>
+		<field name="HOPE_GRP_ID" visible="true" width="80" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="HOPE_UNI_ID" visible="true" width="80" align="l"/>
+		<field name="HOPE_MOVDATE" visible="true" width="120" align="c" sort="desc"/>
+		<field name="HOPE_INIDATE" visible="true" width="120" align="c"/>
+		<field name="HOPE_ENDDATE" visible="true" width="120" align="c"/>
+		<field name="HOPE_DURATION" visible="true" width="30" align="r"/>
+		<field name="HOPE_VALUE" visible="true" width="50" align="r"/>
+		<field name="HOPE_DPAY_ID" visible="true" width="60" align="l" reltable="PAYTYPES_DEF" relfield="DPAY_ID" relshown="DPAY_LIT_ID" reltranslate="true"/>
+		<field name="HOPE_CHIPCARD_ID" visible="true" width="60" align="r"/>
+		<field name="HOPE_CHIPCARD_CREDIT" visible="true" width="110" align="r"/>
+		<field name="HCC_NUMBER" visible="true" width="200" align="l"/>
+		<field name="HCC_NAME" visible="true" width="200" align="l"/>
+		<field name="HOPE_DOPE_ID" visible="true" width="0" align="l"/>		
+		<filter where="1=2"/>
+		
+	</table>
+
+	<table name="VW_OPERATIONS_HIS_FULL_CC">
+		<field name="HOPE_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="HOPE_DOPE_ID_VIS" visible="true" width="60" align="l" reltable="OPERATIONS_DEF" relfield="DOPE_ID" relshown="DOPE_LIT_ID" reltranslate="true"/>
+		<field name="HOPE_TICKETNUM" visible="true" width="80" align="r"/>
+		<field name="HOPE_VEHICLEID" visible="true" width="100" align="l"/>
+		<field name="HOPE_FIN_ID" visible="true" width="100" align="l"/>
+		<field name="HOPE_FIN_DFIN_ID" visible="true" width="90" align="l" reltable="FINES_DEF" relfield="DFIN_ID" relshown="DFIN_DESCSHORT" reltranslate="false"/>		
+		<field name="HOPE_DART_ID" visible="true" width="150" align="l" reltable="ARTICLES_DEF" relfield="DART_ID" relshown="DART_DESCLONG" reltranslate="false"/>
+		<field name="HOPE_ART_ID" visible="true" width="40" align="l"/>
+		<field name="HOPE_GRP_ID" visible="true" width="80" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="HOPE_UNI_ID" visible="true" width="80" align="l"/>
+		<field name="HOPE_MOVDATE" visible="true" width="120" align="c" sort="desc"/>
+		<field name="HOPE_INIDATE" visible="true" width="120" align="c"/>
+		<field name="HOPE_ENDDATE" visible="true" width="120" align="c"/>
+		<field name="HOPE_DURATION" visible="true" width="30" align="r"/>
+		<field name="HOPE_VALUE" visible="true" width="50" align="r"/>
+		<field name="HOPE_DPAY_ID" visible="true" width="60" align="l" reltable="PAYTYPES_DEF" relfield="DPAY_ID" relshown="DPAY_LIT_ID" reltranslate="true"/>
+		<field name="HOPE_CHIPCARD_ID" visible="true" width="60" align="r"/>
+		<field name="HOPE_CHIPCARD_CREDIT" visible="true" width="110" align="r"/>
+		<field name="HCC_NUMBER" visible="true" width="200" align="l"/>
+		<field name="HCC_NAME" visible="true" width="200" align="l"/>
+		<field name="HOPE_DOPE_ID" visible="true" width="0" align="l"/>		
+		<filter where="1=2"/>
+		
+	</table>
+
+	<table name="PARAMETERS">
+		<field name="PAR_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="PAR_DESCSHORT" visible="true" width="250" align="l"/>
+		<field name="PAR_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="PAR_VALUE" visible="true" width="250" align="l"/>
+		<field name="PAR_CATEGORY" visible="true" width="150" align="l"/>
+	</table>
+	<table name="PAYTYPES_DEF">
+		<field name="DPAY_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DPAY_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DPAY_DESCLONG" visible="true" width="400" align="l"/>
+	</table>
+	<table name="PDA_MAILS">
+		<field name="MPDA_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="MPDA_DATE" visible="true" width="160" align="r"/>
+		<field name="MPDA_TEXT" visible="true" width="400" align="l"/>
+		<field name="MPDA_STATUS" visible="true" width="160" align="r"/>
+	</table>
+	<table name="PDA_USER_REG">
+		<field name="RPDA_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="RPDA_USER_ID" visible="true" width="300" align="r"/>
+		<field name="RPDA_DATE" visible="true" width="160" align="c"/>
+		<field name="RPDA_VEHICLEID" visible="true" width="400" align="l"/>
+	</table>
+	<table name="PDA_USER_STAT">
+		<field name="SPDA_ID" visible="true" width="40" align="r" primarykey="true"/>
+		<field name="SPDA_UNI_ID" visible="true" width="80" align="l"/>
+		<field name="SPDA_USER_ID" visible="true" width="80" align="l" reltable="USERS" relfield="USR_ID" relshown="USR_NAME" reltranslate="false"/>
+		<field name="SPDA_INIDATE" visible="true" width="75" align="c"/>
+		<field name="SPDA_ENDDATE" visible="true" width="75" align="c"/>
+		<field name="SPDA_IDLETIME" visible="true" width="80" align="r"/>
+		<field name="SPDA_NUMVEHICLES" visible="true" width="80" align="r"/>
+		<field name="SPDA_NUMFINES" visible="true" width="80" align="r"/>
+		<field name="SPDA_NUMREPVEH_1" visible="true" width="80" align="r"/>
+		<field name="SPDA_NUMREP_1" visible="true" width="80" align="r"/>
+		<field name="SPDA_NUMREPVEH_2" visible="true" width="80" align="r"/>
+		<field name="SPDA_NUMREP_2" visible="true" width="80" align="r"/>
+		<field name="SPDA_NUMREPVEH_3" visible="true" width="80" align="r"/>
+		<field name="SPDA_NUMREP_3" visible="true" width="80" align="r"/>
+		<field name="SPDA_COMMENT" visible="true" width="150" align="l"/>
+	</table>
+
+
+	<table name="ALARMS_LEVEL_DEF">
+		<field name="DALV_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DALV_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DALV_COLOR" visible="true" width="200" align="l"/>
+	</table>
+
+	<table name="SENDING_EVENT_TYPE">
+		<field name="TEV_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="TEV_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="TEV_DESCLONG" visible="true" width="200" align="l"/>
+	</table>
+
+	<table name="DISTRIBUTION_LISTS_REMOTE">
+		<field name="DL_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DL_DESC" visible="true" width="200" align="l"/>
+		<field name="DL_NAME" visible="true" width="200" align="l"/>
+		<field name="DL_DLT_ID" visible="true" width="200" align="l"/>
+	</table>
+
+
+
+	<table name="SENDING_EVENTS_RULES">
+		<field name="SEEVR_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="SEEVR_TEV_ID" visible="true" width="100" align="l" reltable="SENDING_EVENT_TYPE" relfield="TEV_ID" relshown="TEV_DESCSHORT" reltranslate="false"/>
+		<field name="SEEVR_DL_ID" visible="true" width="150" align="l" reltable="DISTRIBUTION_LISTS_REMOTE" relfield="DL_ID" relshown="DL_DESC" reltranslate="false"/>
+		<field name="SEEVR_GRP_ID" visible="true" width="200" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="SEEVR_TIM_ID" visible="true" width="200" align="l" reltable="TIMETABLES" relfield="TIM_ID" relshown="TIM_DESC" reltranslate="false"/>
+		<field name="SEEVR_DDAY_ID" visible="true" width="150" align="l" reltable="DAYS_DEF" relfield="DDAY_ID" relshown="DDAY_DESCSHORT" reltranslate="false"/>
+		<field name="SEEVR_DATEINI" visible="true" width="100" align="l" />
+		<field name="SEEVR_DATEEND" visible="true" width="100" align="l" />
+		<field name="SEEVR_UNI_ID" visible="true" width="200" align="l" reltable="UNITS" relfield="UNI_ID" relshown="UNI_DESCSHORT" reltranslate="false"/>
+		<field name="SEEVR_DAY_ID" visible="true" width="200" align="l" reltable="DAYS" relfield="DAY_ID" relshown="DAY_DESC" reltranslate="false"/>
+		<field name="SEEVR_DALA_ID" visible="true" width="200" align="l" reltable="ALARMS_DEF" relfield="DALA_ID" relshown="DALA_DESCLONG" reltranslate="false"/>
+		<field name="SEEVR_DALV_ID" visible="true" width="200" align="l" reltable="ALARMS_LEVEL_DEF" relfield="DALV_ID" relshown="DALV_DESCSHORT" reltranslate="false"/>		
+	</table>
+
+
+	<table name="REPLICATIONS_DEF">
+		<field name="DREP_ID" visible="true" width="50" align="r" primarykey="true"/>
+		<field name="DREP_DESCSHORT" visible="true" width="100" align="l"/>
+		<field name="DREP_DESCLONG" visible="true" width="200" align="l"/>
+		<field name="DREP_DLUNI_SOURCE" visible="true" width="100" align="l" reltable="UNITS_LOG_DEF" relfield="DLUNI_ID" relshown="DLUNI_DESC" reltranslate="false"/>
+		<field name="DREP_DLUNI_DESTINATION" visible="true" width="100" align="l" reltable="UNITS_LOG_DEF" relfield="DLUNI_ID" relshown="DLUNI_DESC" reltranslate="false"/>
+		<field name="DREP_DGRP_ID" visible="true" width="100" align="l" reltable="GROUPS_DEF" relfield="DGRP_ID" relshown="DGRP_DESCSHORT" reltranslate="false"/>
+		<field name="DREP_FREQUENCY" visible="true" width="80" align="r"/>
+		<field name="DREP_INIDATE" visible="true" width="120" align="c"/>
+		<field name="DREP_ENDDATE" visible="true" width="120" align="c"/>
+		<field name="DREP_LAST" visible="true" width="120" align="c"/>
+		<field name="DREP_INIT" visible="true" width="80" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_DESCSHORT" reltranslate="false"/>
+	</table>
+	<table name="REPLICATIONS_PDA">
+		<field name="RPDA_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="RPDA_UNI_ID" visible="true" width="300" align="l"/>
+		<field name="RPDA_GRP_ID" visible="true" width="300" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+	</table>
+	<table name="REPLICATIONS_TABLES">
+		<field name="TREP_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="TREP_DREP_ID" visible="true" width="160" align="l" reltable="REPLICATIONS_DEF" relfield="DREP_ID" relshown="DREP_DESCSHORT" reltranslate="false"/>
+		<field name="TREP_COD_ID" visible="true" width="160" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_DESCSHORT" reltranslate="false"/>
+		<field name="TREP_TABLE" visible="true" width="160" align="r"/>
+		<field name="TREP_ORDER" visible="true" width="160" align="r"/>
+		<field name="TREP_NEWVERSION" visible="true" width="160" align="r"/>
+		<field name="TREP_OLDVERSION" visible="true" width="160" align="r"/>
+	</table>
+	<table name="RESIDENTS">
+		<field name="RES_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="RES_VEHICLEID" visible="true" width="120" align="r"/>
+		<field name="RES_GRP_ID" visible="true" width="200" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCLONG" reltranslate="false"/>
+		<field name="RES_DART_ID" visible="false" width="200" align="l"/>
+	</table>	
+	<table name="ROLES">
+		<field name="ROL_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="ROL_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="ROL_DESCLONG" visible="true" width="400" align="l"/>
+	</table>
+	<table name="ROL_ACCESS">
+		<field name="RACC_ROL_ID" visible="true" width="60" align="l" reltable="ROLES" relfield="ROL_ID" relshown="ROL_DESCSHORT" reltranslate="false" primarykey="true"/>
+		<field name="RACC_VIE_ID" visible="true" width="150" align="l" reltable="VIEWS" relfield="VIE_ID" relshown="VIE_LIT_ID" reltranslate="true" primarykey="true"/>
+		<field name="RACC_ALLOWED" visible="true" width="150" align="r"/>
+	</table>
+	<table name="ROL_PERMISSIONS">
+		<!-- Translation of this table is done in the source code, as the generic component is not able to handle multi-fields foreign keys -->
+		<field name="RPER_ROL_ID" visible="true" width="60" align="l" reltable="ROLES" relfield="ROL_ID" relshown="ROL_DESCSHORT" reltranslate="false" primarykey="true"/>
+		<field name="RPER_VELE_VIE_ID" visible="true" width="160" align="l" reltable="VIEWS" relfield="VIE_ID" relshown="VIE_LIT_ID" reltranslate="true" primarykey="true"/>
+		<field name="RPER_VELE_ELEMENTNUMBER" visible="true" width="160" align="l" primarykey="true"/>
+		<field name="RPER_INSALLOWED" visible="true" width="160" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_DESCSHORT" reltranslate="false"/>
+		<field name="RPER_UPDALLOWED" visible="true" width="160" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_DESCSHORT" reltranslate="false"/>
+		<field name="RPER_DELALLOWED" visible="true" width="160" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_DESCSHORT" reltranslate="false"/>
+		<field name="RPER_EXEALLOWED" visible="true" width="160" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_DESCSHORT" reltranslate="false" />
+	</table>
+	<table name="STATUS">
+		<field name="STA_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="STA_DSTA_ID" visible="true" width="120" align="l" reltable="STATUS_DEF" relfield="DSTA_ID" relshown="DSTA_DESCSHORT" reltranslate="false"/>
+		<field name="STA_PSTA_ID" visible="true" width="120" align="l" reltable="STATUS_PROFILES" relfield="PSTA_ID" relshown="PSTA_DESCSHORT" reltranslate="false"/>
+		<field name="STA_DGRP_ID" visible="true" width="120" align="l" reltable="GROUPS_DEF" relfield="DGRP_ID" relshown="DGRP_DESCSHORT" reltranslate="false"/>
+		<field name="STA_GRP_ID" visible="true" width="120" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="STA_DDAY_ID" visible="true" width="120" align="l" reltable="DAYS_DEF" relfield="DDAY_ID" relshown="DDAY_DESCSHORT" reltranslate="false"/>
+		<field name="STA_DAY_ID" visible="true" width="120" align="l" reltable="DAYS" relfield="DAY_ID" relshown="DAY_DESC" reltranslate="false"/>
+		<field name="STA_TIM_ID" visible="true" width="120" align="l" reltable="TIMETABLES" relfield="TIM_ID" relshown="TIM_DESC" reltranslate="false"/>
+		<field name="STA_UNI_ID" visible="true" width="120" align="l"/>
+	</table>
+	<table name="STATUS_DEF">
+		<field name="DSTA_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DSTA_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="DSTA_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="DSTA_LIT_ID" visible="true" width="300" align="r"/>
+	</table>
+	<table name="STATUS_PROFILES">
+		<field name="PSTA_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="PSTA_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="PSTA_DESCLONG" visible="true" width="400" align="l"/>
+	</table>
+	<table name="STREETS">
+		<field name="STR_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="STR_DESC" visible="true" width="400" align="l"/>
+		<field name="STR_MIN" visible="true" width="80" align="r"/>
+		<field name="STR_MAX" visible="true" width="80" align="r"/>
+		<field name="STR_PROVINCIA" visible="true" width="80" align="r"/>
+		<field name="STR_MUNICIPIO" visible="true" width="0" align="r"/>
+		<field name="STR_TIPOVIA" visible="true" width="80" align="r"/>
+	</table>
+	
+	<table name="STREETS_STRETCHS">
+		<field name="SS_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="SS_EXT_ID" visible="true" width="120" align="l"/>
+		<field name="SS_STR_ID" visible="true" width="120" align="l" reltable="STREETS" relfield="STR_ID" relshown="STR_DESC" reltranslate="false"/>
+		<field name="SS_STR_SS_ID" visible="true" width="80" align="l"/>
+		<field name="SS_GRP_ID" visible="true" width="120" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="SS_REMARKS" visible="true" width="100" align="r"/>
+		<field name="SS_STR_ID_DESDE" visible="true" width="120" align="l" reltable="STREETS" relfield="STR_ID" relshown="STR_DESC" reltranslate="false"/>
+		<field name="SS_STR_ID_HASTA" visible="true" width="120" align="l" reltable="STREETS" relfield="STR_ID" relshown="STR_DESC" reltranslate="false"/>
+		<field name="SS_LAST_ROTATION" visible="true" width="120" align="r"/>
+		<field name="SS_LAST_INVENTORY" visible="true" width="120" align="r"/>
+		<field name="SS_P_EN_LINEA_PAR" visible="true" width="100" align="r"/>
+		<field name="SS_P_EN_LINEA_IMPAR" visible="true" width="100" align="r"/>
+		<field name="SS_P_EN_BATERIA_PAR" visible="true" width="100" align="r"/>
+		<field name="SS_P_EN_BATERIA_IMPAR" visible="true" width="100" align="r"/>
+		<field name="SS_P_C_D_DIA_ENTERO" visible="true" width="100" align="r"/>
+		<field name="SS_P_C_D_MEDIODIA" visible="true" width="100" align="r"/>
+		<field name="SS_P_PMR" visible="true" width="100" align="r"/>
+		<field name="SS_P_VADO_DIA_ENTERO" visible="true" width="100" align="r"/>
+		<field name="SS_P_VADO_MEDIODIA" visible="true" width="100" align="r"/>
+		<field name="SS_P_BASURA" visible="true" width="100" align="r"/>
+		<field name="SS_P_MOTOS" visible="true" width="100" align="r"/>
+		<field name="SS_NUM_WORKS" visible="true" width="100" align="r"/>
+	</table>	
+	
+	
+	
+	<table name="V_SS_INVENTORIES">
+		<field name="SSI_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="SSI_ZONE_ID" visible="true" width="150" align="l" reltable="VW_GROUPS_ZONES" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="SSI_SECTOR_ID" visible="true" width="150" align="l" reltable="VW_GROUPS_SECTORS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="SSI_ROUTE_ID" visible="true" width="150" align="l" reltable="VW_GROUPS_ROUTES" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="SSI_SS_ID" visible="true" width="500" align="l" reltable="STREETS_STRETCHS" relfield="SS_ID" relshown="SS_EXT_ID" reltranslate="false"/>
+		<field name="SSI_INI_DATE" visible="true" width="120" align="r"/>
+		<field name="SSI_END_DATE" visible="true" width="120" align="r"/>
+		<field name="SSI_USR_ID" visible="true" width="100" align="l" reltable="USERS" relfield="USR_ID" relshown="USR_LOGIN" reltranslate="false"/>
+		<field name="SSI_UNI_ID" visible="true" width="60" align="r" />
+		<field name="SSI_P_EN_LINEA_PAR" visible="true" width="100" align="r"/>
+		<field name="SSI_P_EN_LINEA_IMPAR" visible="true" width="100" align="r"/>
+		<field name="SSI_P_EN_BATERIA_PAR" visible="true" width="100" align="r"/>
+		<field name="SSI_P_EN_BATERIA_IMPAR" visible="true" width="100" align="r"/>
+		<field name="SSI_P_C_D_DIA_ENTERO" visible="true" width="100" align="r"/>
+		<field name="SSI_P_C_D_MEDIODIA" visible="true" width="100" align="r"/>
+		<field name="SSI_P_PMR" visible="true" width="100" align="r"/>
+		<field name="SSI_P_VADO_DIA_ENTERO" visible="true" width="100" align="r"/>
+		<field name="SSI_P_VADO_MEDIODIA" visible="true" width="100" align="r"/>
+		<field name="SSI_P_BASURA" visible="true" width="100" align="r"/>
+		<field name="SSI_P_MOTOS" visible="true" width="100" align="r"/>
+	</table>	
+	
+	
+	
+	<table name="INVENTORY_VARIATIONS">
+		<field name="SSIV_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="SSIV_SS_ID" visible="true" width="500" align="l" reltable="STREETS_STRETCHS" relfield="SS_ID" relshown="SS_EXT_ID" reltranslate="false"/>
+		<field name="SSIV_INI_DATE" visible="true" width="120" align="r"/>
+		<field name="SSIV_END_DATE" visible="true" width="120" align="r"/>
+		<field name="SSIV_P_EN_LINEA_PAR" visible="true" width="100" align="r"/>
+		<field name="SSIV_P_EN_LINEA_IMPAR" visible="true" width="100" align="r"/>
+		<field name="SSIV_P_EN_BATERIA_PAR" visible="true" width="100" align="r"/>
+		<field name="SSIV_P_EN_BATERIA_IMPAR" visible="true" width="100" align="r"/>
+		<field name="SSIV_P_C_D_DIA_ENTERO" visible="true" width="100" align="r"/>
+		<field name="SSIV_P_C_D_MEDIODIA" visible="true" width="100" align="r"/>
+		<field name="SSIV_P_PMR" visible="true" width="100" align="r"/>
+		<field name="SSIV_P_VADO_DIA_ENTERO" visible="true" width="100" align="r"/>
+		<field name="SSIV_P_VADO_MEDIODIA" visible="true" width="100" align="r"/>
+		<field name="SSIV_P_BASURA" visible="true" width="100" align="r"/>
+		<field name="SSIV_P_MOTOS" visible="true" width="100" align="r"/>
+		<field name="SSIV_P_WORKS" visible="true" width="100" align="r"/>
+	</table>	
+		
+	
+	<table name="V_SS_ROTATIONS">
+		<field name="SSR_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="SSR_ZONE_ID" visible="true" width="150" align="l" reltable="VW_GROUPS_ZONES" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="SSR_SECTOR_ID" visible="true" width="150" align="l" reltable="VW_GROUPS_SECTORS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="SSR_ROUTE_ID" visible="true" width="150" align="l" reltable="VW_GROUPS_ROUTES" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="SSR_SS_ID" visible="true" width="500" align="l" reltable="STREETS_STRETCHS" relfield="SS_ID" relshown="SS_EXT_ID" reltranslate="false"/>
+		<field name="SSR_INI_DATE" visible="true" width="120" align="r"/>
+		<field name="SSR_END_DATE" visible="true" width="120" align="r"/>
+		<field name="SSR_USR_ID" visible="true" width="100" align="l" reltable="USERS" relfield="USR_ID" relshown="USR_LOGIN" reltranslate="false"/>
+		<field name="SSR_UNI_ID" visible="true" width="60" align="r" />
+		<field name="SSR_ROT_TYPE" visible="true" width="100" align="r"/>
+		<field name="SSR_HOLES" visible="true" width="100" align="r"/>
+		<field name="SSR_RESI_NO_TICKET" visible="true" width="100" align="r"/>
+		<field name="SSR_RESI_TICKET" visible="true" width="100" align="r"/>
+		<field name="SSR_NO_RESI_NO_TICKET" visible="true" width="100" align="r"/>
+		<field name="SSR_NO_RESI_TICKET" visible="true" width="100" align="r"/>
+		<field name="SSR_SPECIAL_VEHICLE" visible="true" width="100" align="r"/>
+		<field name="SSR_MINUSVALID" visible="true" width="100" align="r"/>
+	</table>	
+		
+		
+	<table name="WORKS">
+		<field name="WORK_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="WORK_SS_ID" visible="true" width="500" align="l" reltable="STREETS_STRETCHS" relfield="SS_ID" relshown="SS_EXT_ID" reltranslate="false"/>
+		<field name="WORK_PDA_ID" visible="true" width="0" align="r"/>
+		<field name="WORK_INI_DATE" visible="true" width="120" align="r"/>
+		<field name="WORK_END_DATE" visible="true" width="120" align="r"/>
+		<field name="WORK_USR_ID" visible="true" width="100" align="l" reltable="USERS" relfield="USR_ID" relshown="USR_LOGIN" reltranslate="false"/>
+		<field name="WORK_UNI_ID" visible="true" width="60" align="r" />
+		<field name="WORK_NUM_PARK_SPACES" visible="true" width="100" align="r"/>
+		<field name="WORK_REMARKS" visible="true" width="300" align="r"/>
+	</table>		
+		
+		
+	<table name="V_GROUPS_CHILDS_ROUTES">
+		<field name="CGRP_UNIQUE_ID" visible="true" width="100" align="r" primarykey="true"/>
+		<field name="CGRP_ID" visible="true" width="300" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCSHORT" reltranslate="false"/>
+		<field name="CGRP_CHILD" visible="true" width="500" align="l" reltable="STREETS_STRETCHS" relfield="SS_ID" relshown="SS_EXT_ID" reltranslate="false" />
+		<field name="CGRP_ORDER" visible="true" width="100" align="l"/>
+	</table>	
+		
+	
+	<table name="SUBTARIFFS">
+		<field name="STAR_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="STAR_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="STAR_DESCLONG" visible="true" width="400" align="l"/>
+	</table>
+	<table name="TARIFFS">
+		<field name="TAR_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="TAR_NUMBER" visible="true" width="40" align="r" primarykey="true"/>
+		<field name="TAR_DESCSHORT" visible="true" width="100" align="l"/>
+		<field name="TAR_DESCLONG" visible="true" width="150" align="l"/>
+		<field name="TAR_TAR_ID" visible="true" width="60" align="r"/>
+		<field name="TAR_DISCOUNT" visible="true" width="40" align="r"/>
+		<field name="TAR_STAR_ID" visible="true" width="80" align="l" reltable="SUBTARIFFS" relfield="STAR_ID" relshown="STAR_DESCSHORT" reltranslate="false"/>
+		<field name="TAR_DDAY_ID" visible="true" width="80" align="l" reltable="DAYS_DEF" relfield="DDAY_ID" relshown="DDAY_DESCSHORT" reltranslate="false"/>
+		<field name="TAR_DAY_ID" visible="true" width="80" align="l" reltable="DAYS" relfield="DAY_ID" relshown="DAY_DESC" reltranslate="false"/>
+		<field name="TAR_TIM_ID" visible="true" width="80" align="l" reltable="TIMETABLES" relfield="TIM_ID" relshown="TIM_DESC" reltranslate="false"/>
+		<field name="TAR_INIDATE" visible="true" width="80" align="c"/>
+		<field name="TAR_ENDDATE" visible="true" width="80" align="c"/>
+		<field name="TAR_SIGN" visible="true" width="60" align="r"/>
+		<field name="TAR_NEXTDAY" visible="true" width="40" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="TAR_NEXTBLOCK" visible="true" width="40" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="TAR_RNEXTBLOCKTIME" visible="true" width="40" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="TAR_RNEXTBLOCKINT" visible="true" width="40" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="TAR_RNEXTDAYINT" visible="true" width="40" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="TAR_RNEXTDAYTIME" visible="true" width="40" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="TAR_ADDFREETIME" visible="true" width="40" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+	</table>
+	<table name="TAXES">
+		<field name="TAX_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="TAX_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="TAX_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="TAX_TYPE" visible="true" width="120" align="r"/>
+		<field name="TAX_VALUE" visible="true" width="120" align="l"/>
+		<field name="TAX_DEFAULT" visible="true" width="120" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+	</table>
+	<table name="TIMETABLES">
+		<field name="TIM_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="TIM_DESC" visible="true" width="400" align="l"/>
+		<field name="TIM_INI" visible="true" width="300" align="r"/>
+		<field name="TIM_END" visible="true" width="300" align="r"/>
+	</table>
+	<table name="UNITS">
+		<field name="UNI_ID" visible="true" width="50" align="r" primarykey="true"/>
+		<field name="UNI_DPUNI_ID" visible="true" width="120" align="l" reltable="UNITS_PHY_DEF" relfield="DPUNI_ID" relshown="DPUNI_DESC" reltranslate="false"/>
+		<field name="UNI_DESCSHORT" visible="true" width="100" align="l"/>
+		<field name="UNI_DESCLONG" visible="true" width="200" align="l"/>
+		<field name="UNI_POSX" visible="true" width="60" align="r"/>
+		<field name="UNI_POSY" visible="true" width="60" align="r"/>
+		<field name="UNI_MAXSEATS" visible="true" width="60" align="r"/>
+		<field name="UNI_STR_ID" visible="true" width="150" align="l" reltable="STREETS" relfield="STR_ID" relshown="STR_DESC" reltranslate="false"/>
+		<field name="UNI_DATE" visible="true" width="60" align="l"/>
+		<field name="UNI_DSTA_ID" visible="true" width="60" align="l" reltable="STATUS_DEF" relfield="DSTA_ID" relshown="DSTA_LIT_ID" reltranslate="true"/>/>
+		<field name="UNI_IP" visible="true" width="200" align="l"/>
+		<field name="UNI_APPVERSION" visible="true" width="80" align="l"/>
+		<field name="UNI_REPVERSION" visible="true" width="80" align="l"/>
+	</table>
+	<table name="UNITS_LOG_DEF">
+		<field name="DLUNI_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DLUNI_DESC" visible="true" width="200" align="l"/>
+		<field name="DLUNI_PORT" visible="true" width="150" align="r"/>
+	</table>
+	<table name="UNITS_MEASURES">
+		<field name="MUNI_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="MUNI_DATE" visible="true" width="80" align="c"/>
+		<field name="MUNI_UNI_ID" visible="true" width="150" align="l"/>
+		<field name="MUNI_VALUE1" visible="true" width="150" align="r"/>
+		<field name="MUNI_VALUE2" visible="true" width="150" align="r"/>
+		<field name="MUNI_VALUE3" visible="true" width="150" align="r"/>
+		<field name="MUNI_VALUE4" visible="true" width="150" align="r"/>
+		<field name="MUNI_VALUE5" visible="true" width="150" align="r"/>
+		<field name="MUNI_VALUE6" visible="true" width="150" align="r"/>
+		<field name="MUNI_VALUE7" visible="true" width="150" align="r"/>
+		<field name="MUNI_VALUE8" visible="true" width="150" align="r"/>
+		<field name="MUNI_VALUE9" visible="true" width="150" align="r"/>
+		<field name="MUNI_VALUE10" visible="true" width="150" align="r"/>
+
+	</table>
+	<table name="UNITS_MEASURES_HIS">
+		<field name="HMUNI_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="HMUNI_DATE" visible="true" width="80" align="c"/>
+		<field name="HMUNI_UNI_ID" visible="true" width="150" align="l"/>
+		<field name="HMUNI_VALUE1" visible="true" width="150" align="r"/>
+		<field name="HMUNI_VALUE2" visible="true" width="150" align="r"/>
+		<field name="HMUNI_VALUE3" visible="true" width="150" align="r"/>
+		<field name="HMUNI_VALUE4" visible="true" width="150" align="r"/>
+		<field name="HMUNI_VALUE5" visible="true" width="150" align="r"/>
+		<field name="HMUNI_VALUE6" visible="true" width="150" align="r"/>
+		<field name="HMUNI_VALUE7" visible="true" width="150" align="r"/>
+		<field name="HMUNI_VALUE8" visible="true" width="150" align="r"/>
+		<field name="HMUNI_VALUE9" visible="true" width="150" align="r"/>
+		<field name="HMUNI_VALUE10" visible="true" width="150" align="r"/>
+
+	</table>
+	<table name="UNITS_OCCUPATION">
+		<field name="OUNI_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="OUNI_UNI_ID" visible="true" width="160" align="l"/>
+		<field name="OUNI_LEVEL" visible="true" width="160" align="r"/>
+		<field name="OUNI_INIDATE" visible="true" width="160" align="c"/>
+		<field name="OUNI_ENDDATE" visible="true" width="160" align="c"/>
+	</table>
+	<table name="UNITS_PARAMS">
+		<field name="PUNI_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="PUNI_DLUNI_ID" visible="true" width="160" align="l" reltable="UNITS_LOG_DEF" relfield="DLUNI_ID" relshown="DLUNI_DESC" reltranslate="false"/>
+		<field name="PUNI_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="PUNI_DESCLONG" visible="true" width="400" align="l"/>
+		<field name="PUNI_VALUE" visible="true" width="160" align="l"/>
+		<field name="PUNI_CATEGORY" visible="true" width="160" align="l"/>
+	</table>
+	<table name="UNITS_PHY_DEF">
+		<field name="DPUNI_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="DPUNI_DESC" visible="true" width="400" align="l"/>
+		<field name="DPUNI_DLUNI_ID" visible="true" width="160" align="l" reltable="UNITS_LOG_DEF" relfield="DLUNI_ID" relshown="DLUNI_DESC" reltranslate="false"/>
+	</table>
+	<table name="UNITS_RESULTS">
+		<field name="RUNI_UNI_ID" visible="true" width="80" align="l"/>
+		<field name="RUNI_INIDATE" visible="true" width="160" align="c" primarykey="true"/>
+		<field name="RUNI_ENDDATE" visible="true" width="160" align="c"/>
+		<field name="RUNI_PARCIAL" visible="true" width="160" align="r"/>
+		<field name="RUNI_PARCIALCASH" visible="true" width="100" align="r"/>
+		<field name="RUNI_TOTAL" visible="true" width="100" align="r"/>
+	</table>
+	 
+
+	<table name="UNITS_STREETS_STRETCHS">
+		<field name="USS_ID" visible="true" width="100" align="l" primarykey="true"/>
+		<field name="USS_UNI_ID" visible="true" width="200" align="l" reltable="UNITS" relfield="UNI_ID" relshown="UNI_DESCSHORT" reltranslate="false"/>
+		<field name="USS_SS_ID" visible="true" width="600" align="l"  reltable="STREETS_STRETCHS" relfield="SS_ID" relshown="SS_EXT_ID" reltranslate="false"/>
+	</table>	
+	
+	<table name="USERS">
+		<field name="USR_ID" visible="true" width="50" align="r" primarykey="true"/>
+		<field name="USR_NAME" visible="true" width="120" align="l"/>
+		<field name="USR_SURNAME1" visible="true" width="120" align="l"/>
+		<field name="USR_SURNAME2" visible="true" width="120" align="l"/>
+		<field name="USR_ROL_ID" visible="true" width="120" align="l" reltable="ROLES" relfield="ROL_ID" relshown="ROL_DESCSHORT" reltranslate="false"/>
+		<field name="USR_LOGIN" visible="true" width="120" align="l"/>
+		<field name="USR_PASSWORD" visible="true" width="120" align="l"/>
+		<field name="USR_LAN_ID" visible="true" width="120" align="l" reltable="LANGUAGES" relfield="LAN_ID" relshown="LAN_DESCSHORT" reltranslate="false"/>
+		<field name="USR_STATUS" visible="true" width="80" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+		<field name="USR_CUS_ID" visible="true" width="120" align="l" reltable="CUSTOMERS" relfield="CUS_ID" relshown="CUS_NAME" reltranslate="false"/>
+	</table>
+	<table name="USR_ACCESS">
+		<field name="UACC_USR_ID" visible="true" width="60" align="l" reltable="USERS" relfield="USR_ID" relshown="USR_NAME" reltranslate="false" primarykey="true"/>
+		<field name="UACC_VIE_ID" visible="true" width="150" align="l" reltable="VIEWS" relfield="VIE_ID" relshown="VIE_LIT_ID" reltranslate="true" primarykey="true"/>
+		<field name="UACC_ALLOWED" visible="true" width="150" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_LIT_ID" reltranslate="true"/>
+	</table>
+	<table name="USR_PERMISSIONS">
+		<!-- Translation of this table is done in the source code, as the generic component is not able to handle multi-fields foreign keys -->
+		<field name="UPER_USR_ID" visible="true" width="60" align="l" reltable="USERS" relfield="USR_ID" relshown="USR_NAME" reltranslate="false" primarykey="true"/>
+		<field name="UPER_VELE_VIE_ID" visible="true" width="150" align="l" reltable="VIEWS" relfield="VIE_ID" relshown="VIE_LIT_ID" reltranslate="true" primarykey="true"/>
+		<field name="UPER_VELE_ELEMENTNUMBER" visible="true" width="150" align="l" primarykey="true"/>
+		<field name="UPER_INSALLOWED" visible="true" width="150" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_DESCSHORT" reltranslate="false"/>
+		<field name="UPER_UPDALLOWED" visible="true" width="150" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_DESCSHORT" reltranslate="false"/>
+		<field name="UPER_DELALLOWED" visible="true" width="150" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_DESCSHORT" reltranslate="false"/>
+		<field name="UPER_EXEALLOWED" visible="true" width="150" align="l" reltable="CODES" relfield="COD_ID" relshown="COD_DESCSHORT" reltranslate="false"/>
+	</table>
+	<table name="VEHMANUFACTURERS">
+		<field name="VMAN_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="VMAN_DESCSHORT" visible="true" width="200" align="l"/>
+		<field name="VMAN_DESCLONG" visible="true" width="400" align="l"/>
+	</table>
+	<table name="VEHMODELS">
+		<field name="VMOD_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="VMOD_DESCSHORT" visible="true" width="120" align="l"/>
+		<field name="VMOD_DESCLONG" visible="true" width="160" align="l"/>
+		<field name="VMOD_VMAN_ID" visible="true" width="120" align="l" reltable="VEHMANUFACTURERS" relfield="VMAN_ID" relshown="VMAN_DESCSHORT" reltranslate="false"/>
+	</table>
+	<table name="VERSIONS">
+		<field name="VER_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="VER_TABLE" visible="true" width="150" align="l"/>
+		<field name="VER_VALUE" visible="true" width="150" align="r"/>
+	</table>
+	<table name="VIEWS">
+		<field name="VIE_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="VIE_DLUNI_ID" visible="true" width="60" align="l" reltable="UNITS_LOG_DEF" relfield="DLUNI_ID" relshown="DLUNI_DESC" reltranslate="false"/>
+		<field name="VIE_URL" visible="true" width="300" align="l"/>
+		<field name="VIE_INUSE" visible="true" width="40" align="r"/>
+		<field name="VIE_USR_ID" visible="true" width="60" align="l" reltable="USERS" relfield="USR_ID" relshown="USR_NAME" reltranslate="false"/>
+		<field name="VIE_INUSEDATE" visible="true" width="100" align="c"/>
+		<field name="VIE_LIT_ID" visible="true" width="60" align="r"/>
+		<field name="VIE_IMAGE" visible="true" width="160" align="l"/>
+		<field name="VIE_TITLE_LIT_ID" visible="true" width="60" align="r"/>
+		<field name="VIE_COMPONENT" visible="true" width="250" align="l"/>
+	</table>
+	<table name="VIEWS_ELEMENTS">
+		<field name="VELE_VIE_ID" visible="true" width="300" align="l" reltable="VIEWS" relfield="VIE_ID" relshown="VIE_LIT_ID" reltranslate="true" primarykey="true"/>
+		<field name="VELE_ELEMENTNUMBER" visible="true" width="100" align="r" primarykey="true"/>
+		<field name="VELE_DESCSHORT" visible="true" width="150" align="l"/>
+		<field name="VELE_DESCLONG" visible="true" width="300" align="l"/>
+	</table>
+	<table name="VIEWS_MODULES">
+		<field name="VMOD_MOD_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="VMOD_VIE_ID" visible="true" width="160" align="r" primarykey="true"/>
+		<field name="VMOD_ORDER" visible="true" width="160" align="r"/>
+	</table>
+	<table name="VIPS">
+		<field name="VIP_ID" visible="true" width="60" align="r" primarykey="true"/>
+		<field name="VIP_VEHICLEID" visible="true" width="120" align="r"/>
+		<field name="VIP_TEXT" visible="true" width="120" align="r"/>
+		<field name="VIP_GRP_ID" visible="true" width="200" align="l" reltable="GROUPS" relfield="GRP_ID" relshown="GRP_DESCLONG" reltranslate="false"/>
+		<field name="VIP_DART_ID" visible="false" width="200" align="l"/>
+	</table>	
+	
+</tables>
